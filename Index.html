@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Happy Raksha Bandhan</title>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+<style>
+  :root{
+    --bg1:#ffd6e0;
+    --bg2:#fff1c9;
+    --card:#ffffffee;
+    --accent:#ff6b8a;
+    --muted:#6b6b6b;
+  }
+  html,body{height:100%;margin:0;font-family:Rubik,system-ui,-apple-system,'Segoe UI',Roboto,"Helvetica Neue",Arial;}
+  body{
+    background: radial-gradient(1200px 600px at 10% 10%, #fff6f9 0%, rgba(255,255,255,0) 30%),
+                linear-gradient(120deg,var(--bg1),var(--bg2));
+    display:flex;align-items:center;justify-content:center;padding:3rem;
+  }
+
+  .card{
+    width:min(980px,94vw);
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:2rem;
+    background:linear-gradient(180deg, rgba(255,255,255,0.95), var(--card));
+    border-radius:24px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    padding:2.2rem;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* left content */
+  .left{
+    padding: 1rem 0;
+  }
+  h1{
+    margin:0 0 0.4rem 0;
+    font-size:2.1rem;
+    letter-spacing:-0.02em;
+    color: #332a2a;
+  }
+  p.lead{
+    margin:0 0 1.25rem 0;
+    color:var(--muted);
+    line-height:1.5;
+  }
+  .cta{
+    display:flex;gap:0.75rem;flex-wrap:wrap;
+  }
+  .btn{
+    background:var(--accent);
+    color:white;
+    border:0;padding:0.7rem 1.05rem;border-radius:12px;
+    font-weight:600;text-decoration:none;cursor:pointer;
+    box-shadow: 0 8px 18px rgba(255,107,138,0.18);
+    transition:transform .16s ease, box-shadow .16s ease;
+  }
+  .btn.secondary{
+    background:transparent;color:var(--accent);border:2px solid rgba(255,107,138,0.12);
+    box-shadow:none;font-weight:600;
+  }
+  .btn:active{transform:translateY(1px)}
+  .meta{margin-top:1rem;color:#9b8f8f;font-size:0.92rem}
+
+  /* right visual */
+  .right{
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .illustration{
+    width:300px;height:300px;border-radius:18px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,0.6), transparent 10%),
+      linear-gradient(180deg,#ffd4e0,#ffe5b5);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;padding:1rem;
+  }
+  .ribbon{
+    font-weight:700;color:#7a2b2b;margin-bottom:6px;
+  }
+  .badge{
+    background:rgba(255,255,255,0.6);padding:6px 10px;border-radius:999px;font-weight:700;
+    box-shadow:0 6px 16px rgba(0,0,0,0.06);
+  }
+
+  /* floating hearts */
+  .float-obj{
+    position:absolute;pointer-events:none;
+    will-change:transform,opacity;
+    opacity:.95;
+    animation:float 6s linear infinite;
+  }
+  .float-obj.s1{left:10%;top:8%;animation-duration:6s;transform:translateY(0) scale(.9)}
+  .float-obj.s2{right:12%;bottom:6%;animation-duration:8s;transform:translateY(0) scale(.8)}
+  .float-obj.s3{left:40%;bottom:14%;animation-duration:7.5s;transform:translateY(0) scale(.7)}
+  @keyframes float{
+    0%{transform:translateY(0) rotate(0) scale(1);opacity:1}
+    50%{transform:translateY(-18px) rotate(20deg) scale(1.06);opacity:.95}
+    100%{transform:translateY(0) rotate(-10deg) scale(1);opacity:1}
+  }
+
+  /* confetti pieces (created by JS) */
+  .confetti {
+    position:fixed;left:0;top:0;pointer-events:none;width:100%;height:100%;overflow:visible;
+  }
+
+  /* responsive */
+  @media (max-width:880px){
+    .card{grid-template-columns:1fr;gap:1rem;padding:1.4rem}
+    .right{order:-1}
+    .illustration{width:220px;height:220px}
+    h1{font-size:1.6rem}
+  }
+</style>
+</head>
+<body>
+  <div class="card" role="main" aria-labelledby="title">
+    <div class="left">
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px;">
+        <div class="badge">For my sis</div>
+        <div style="color:#c14b6b;font-weight:600;">Raksha Bandhan</div>
+      </div>
+
+      <h1 id="title">Happy Raksha Bandhan 🎁</h1>
+      <p class="lead">To the best sister — for every laugh, secret and fight that ended in hugs. Sending warm wishes and lots of love today and always.</p>
+
+      <div class="cta">
+        <button class="btn" id="playMusic">Play Song</button>
+        <a class="btn secondary" id="downloadBtn" href="#" download="for-my-sis.png">Download Card</a>
+      </div>
+
+      <div class="meta">Made with ❤️ — customize this message, colors and images in the repo.</div>
+    </div>
+
+    <div class="right" aria-hidden="true">
+      <div class="illustration" id="illustr">
+        <div class="ribbon">Sister • Forever</div>
+        <svg width="110" height="110" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 21s-7-4.5-8.5-9A6.5 6.5 0 0 1 12 3a6.5 6.5 0 0 1 8.5 9C19 16.5 12 21 12 21z" fill="#ff6b8a"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- decorative floating shapes -->
+    <div class="float-obj s1" style="transform-origin:center;">
+      <svg width="46" height="46" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-8.5-9A6.5 6.5 0 0 1 12 3a6.5 6.5 0 0 1 8.5 9C19 16.5 12 21 12 21z" fill="#ffd1e0"/></svg>
+    </div>
+    <div class="float-obj s2"><svg width="36" height="36" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff1d3"/></svg></div>
+    <div class="float-obj s3"><svg width="40" height="40" viewBox="0 0 24 24"><path d="M12 2l2.7 6.9L22 11l-5 3.9L18 22l-6-3.6L6 22l1-7.1L2 11l7.3-2.1L12 2z" fill="#ffd9e6"/></svg></div>
+
+  </div>
+
+  <div class="confetti" id="confetti-root" aria-hidden="true"></div>
+
+<script>
+  // small confetti burst (canvas-free, DOM-based)
+  function createConfettiBurst(count = 28){
+    const root = document.getElementById('confetti-root');
+    for(let i=0;i<count;i++){
+      const el = document.createElement('div');
+      el.style.position='absolute';
+      el.style.width = (6 + Math.random()*10) + 'px';
+      el.style.height = (6 + Math.random()*6) + 'px';
+      el.style.left = (50 + (Math.random()*120-60)) + '%';
+      el.style.top = (45 + (Math.random()*40-20)) + '%';
+      el.style.background = ['#ff8aa0','#ffd07a','#fff1d3','#ffa8d6'][Math.floor(Math.random()*4)];
+      el.style.transform = 'translate(-50%,-50%) rotate(' + (Math.random()*360) + 'deg)';
+      el.style.borderRadius = Math.random()>0.6?'50%':'8px';
+      el.style.opacity = 0.95;
+      el.style.pointerEvents = 'none';
+      el.style.transition = 'transform 1400ms cubic-bezier(.12,.82,.34,1), opacity 1200ms linear';
+      root.appendChild(el);
+      // trigger motion
+      requestAnimationFrame(()=> {
+        const dx = (Math.random()*480 - 240);
+        const dy = (Math.random()*400 - 120) - 200;
+        const rot = (Math.random()*720 - 360);
+        el.style.transform = `translate(${dx}px,${dy}px) rotate(${rot}deg)`;
+        el.style.opacity = 0;
+      });
+      // cleanup
+      setTimeout(()=> el.remove(),1600);
+    }
+  }
+
+  // optional audio (you can replace src with your own)
+  const audio = new Audio('https://cdn.jsdelivr.net/gh/anars/blank-audio@master/1-second-of-silence.mp3');
+  audio.loop = false;
+
+  document.getElementById('playMusic').addEventListener('click', async function(){
+    try {
+      await audio.play(); // modern browsers require user gesture
+    } catch(e){}
+    createConfettiBurst(34);
+  });
+
+  // simple "download" — convert illustration area to an image (uses HTMLCanvas drawImage on cloned node)
+  document.getElementById('downloadBtn').addEventListener('click', async function(e){
+    e.preventDefault();
+    const node = document.getElementById('illustr');
+    // render to canvas by inlining styles (very simple approach)
+    const svg = `
+      <svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'>
+        <foreignObject width='100%' height='100%'>
+          <div xmlns='http://www.w3.org/1999/xhtml' style='font-family:Rubik,system-ui; width:900px;height:900px; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg,#ffd4e0,#ffe5b5);'>
+            <div style='text-align:center'>
+              <div style='font-weight:700;color:#7a2b2b;font-size:38px;margin-bottom:10px;'>Sister • Forever</div>
+              <svg width='260' height='260' viewBox='0 0 24 24' fill="none">
+                <path d='M12 21s-7-4.5-8.5-9A6.5 6.5 0 0 1 12 3a6.5 6.5 0 0 1 8.5 9C19 16.5 12 21 12 21z' fill='#ff6b8a'/>
+              </svg>
+            </div>
+          </div>
+        </foreignObject>
+      </svg>`;
+    const img = new Image();
+    const svgBlob = new Blob([svg], {type:'image/svg+xml;charset=utf-8'});
+    const url = URL.createObjectURL(svgBlob);
+    img.onload = function(){
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img,0,0);
+      URL.revokeObjectURL(url);
+      canvas.toBlob(function(blob){
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'for-my-sis-card.png';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      });
+    };
+    img.src = url;
+  });
+
+  // small accessibility: focus outline for keyboard users
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Tab') document.body.classList.add('show-focus');
+  });
+</script>
+</body>
+</html>
